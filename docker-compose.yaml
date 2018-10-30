@@ -1,0 +1,26 @@
+version: '3'
+services:
+  ## Server
+  server:
+    image: server
+    build: ./server
+    expose:
+      - 8080
+    environment:
+      NODE_ENV: development
+    ports:
+      - 8080:8080
+    volumes:
+      - ./server:/usr/src/app
+  ## Client
+  client:
+    image: client
+    build: ./client
+    links:
+      - server
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+    volumes:
+      - ./client:/usr/src/app
