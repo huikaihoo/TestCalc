@@ -2,7 +2,7 @@ version: '3'
 services:
   ## Server
   server:
-    image: server
+    image: huikaihoo/test-calc-server:1.0
     build: ./server
     expose:
       - 8080
@@ -10,11 +10,9 @@ services:
       NODE_ENV: development
     ports:
       - 8080:8080
-    volumes:
-      - ./server:/usr/src/app
   ## Client
   client:
-    image: client
+    image: huikaihoo/test-calc-client:1.0
     build: ./client
     links:
       - server
@@ -22,5 +20,3 @@ services:
       - 3000
     ports:
       - 3000:3000
-    volumes:
-      - ./client:/usr/src/app
