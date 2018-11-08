@@ -9,5 +9,7 @@ RUN npm install
 # If you are building your code for production
 # RUN npm install --only=production
 
-EXPOSE 8080
+ARG SERVER_PORT
+EXPOSE ${SERVER_PORT}
+
 CMD [ "npm", "start" ]

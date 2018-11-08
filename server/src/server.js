@@ -1,11 +1,12 @@
 'use strict';
 
-require('dotenv').config();
 const express = require('express');
 const math = require('mathjs');
+
 // Constants
-const PORT = 8080;
+require('dotenv').config();
 const HOST = '0.0.0.0';
+const PORT = process.env.SERVER_PORT;
 
 // App
 const app = express();

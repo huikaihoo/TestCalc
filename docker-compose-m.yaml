@@ -1,0 +1,29 @@
+version: '3.3'
+services:
+  ## Server
+  server:
+    image: huikaihoo/test-calc-server:1.1
+    environment:
+      - NODE_ENV
+      - SERVER_PORT
+    expose:
+      - ${SERVER_PORT}
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    labels:
+      kompose.service.expose: "true"
+      kompose.service.type: LoadBalancer
+  ## Client
+  client:
+    image: huikaihoo/test-calc-client:1.1
+    links:
+      - server
+    environment:
+      - CLIENT_PORT
+    expose:
+      - ${CLIENT_PORT}
+    ports:
+      - ${CLIENT_PORT}:${CLIENT_PORT}
+    labels:
+      kompose.service.expose: "true"
+      kompose.service.type: LoadBalancer
