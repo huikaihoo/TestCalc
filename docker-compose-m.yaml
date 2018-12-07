@@ -2,7 +2,7 @@ version: '3.3'
 services:
   ## Server
   server:
-    image: huikaihoo/test-calc-server:1.1
+    image: huikaihoo/test-calc-server:1.2
     environment:
       - NODE_ENV
       - SERVER_PORT
@@ -15,7 +15,7 @@ services:
       kompose.service.type: LoadBalancer
   ## Client
   client:
-    image: huikaihoo/test-calc-client:1.1
+    image: huikaihoo/test-calc-client:1.2
     links:
       - server
     environment:
